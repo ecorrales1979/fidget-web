@@ -1,16 +1,10 @@
 import { CloseButton } from "./CloseButton";
 
+import { FeedbackButton, FeedbackType } from "./FeedbackButton";
 import bugImage from '../assets/bug.svg';
 import ideaImage from '../assets/idea.svg';
 import thoughtImage from '../assets/thought.svg';
 
-interface FeedbackType {
-  title: string;
-  image: {
-    source: string;
-    alt: string;
-  }
-}
 
 const feedbackTypes: Record<string, FeedbackType> = {
   bug: {
@@ -46,14 +40,7 @@ export function WidgetForm() {
 
       <div className="flex py-8 gap-2 w-full">
         {Object.entries(feedbackTypes).map(([key, value]) => (
-          <button
-            key={key}
-            type="button"
-            className="bg-zinc-800 rounded-lg py-5 w-24 flex-1 flex flex-col items-center gap-2 border-2 border-transparent hover:border-brand-500 focus:border-brand-500 focus:outline-none"
-          >
-            <img src={value.image.source} alt={value.image.alt} />
-            <span>{value.title}</span>
-          </button>
+          <FeedbackButton key={key} type={value} />
         ))}
       </div>
 

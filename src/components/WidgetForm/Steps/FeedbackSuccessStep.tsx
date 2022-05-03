@@ -1,1 +1,3 @@
-export function FeedbackSuccessStep() {}
+export function FeedbackSuccessStep() {
+  return <div>Success</div>
+}

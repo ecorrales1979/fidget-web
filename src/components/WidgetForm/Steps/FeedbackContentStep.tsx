@@ -8,9 +8,14 @@ import { FeedbackKey, feedbackTypes } from "../../../data/feedbacktypes";
 interface Props {
   feedbackType: FeedbackKey;
   onFeedbackRestart: () => void;
+  onFeedbackSent: () => void;
 }
 
-export function FeedbackContentStep({ feedbackType, onFeedbackRestart }: Props) {
+export function FeedbackContentStep({
+  feedbackType,
+  onFeedbackRestart,
+  onFeedbackSent,
+}: Props) {
   const [screenshot, setScreenshot] = useState<string | null>(null);
   const [comment, setComment] = useState('');
   const feedbackTypeInfo = feedbackTypes[feedbackType];
@@ -20,6 +25,7 @@ export function FeedbackContentStep({ feedbackType, onFeedbackRestart }: Props) 
     console.log('screenshot', screenshot);
     console.log('title', feedbackType);
     console.log('comment', comment);
+    onFeedbackSent();
   }
 
   return (

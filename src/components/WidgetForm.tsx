@@ -1,36 +1,8 @@
 import { useState } from "react";
+import { FeedbackKey, feedbackTypes } from "../data/feedbacktypes";
 
 import { CloseButton } from "./CloseButton";
-import { FeedbackButton, FeedbackType } from "./FeedbackButton";
-import bugImage from '../assets/bug.svg';
-import ideaImage from '../assets/idea.svg';
-import thoughtImage from '../assets/thought.svg';
-
-type FeedbackKey = "bug" | "idea" | "other";
-
-const feedbackTypes: Record<FeedbackKey, FeedbackType> = {
-  bug: {
-    title: 'Problem',
-    image: {
-      source: bugImage,
-      alt: 'Bug image',
-    }
-  },
-  idea: {
-    title: 'Idea',
-    image: {
-      source: ideaImage,
-      alt: 'Lamp image',
-    }
-  },
-  other: {
-    title: 'Other',
-    image: {
-      source: thoughtImage,
-      alt: 'Cloud image',
-    }
-  },
-}
+import { FeedbackButton } from "./FeedbackButton";
 
 export function WidgetForm() {
   const [feedbackType, setFeedbackType] = useState<FeedbackKey | null>(null);

@@ -3,6 +3,7 @@ import { FeedbackKey, feedbackTypes } from "../../data/feedbacktypes";
 
 import { CloseButton } from "../CloseButton";
 import { FeedbackButton } from "../FeedbackButton";
+import { FeedbackContentStep } from "./Steps/FeedbackContentStep";
 import { FeedbackTypeStep } from "./Steps/FeedbackTypeStep";
 
 export function WidgetForm() {
@@ -13,7 +14,7 @@ export function WidgetForm() {
       {!feedbackType ? (
         <FeedbackTypeStep onFeedbackSelection={setFeedbackType} />
       ) : (
-        <p>{feedbackType}</p>
+        <FeedbackContentStep feedbackType={feedbackType} />
       )}
 
       <footer className="text-xs text-neutral-400">

@@ -1,16 +1,26 @@
+import { ArrowLeft } from "phosphor-react";
+
 import { FeedbackKey, feedbackTypes } from "../../../data/feedbacktypes";
 import { CloseButton } from "../../CloseButton";
 
 interface Props {
   feedbackType: FeedbackKey;
+  onFeedbackRestart: () => void;
 }
 
-export function FeedbackContentStep({ feedbackType }: Props) {
+export function FeedbackContentStep({ feedbackType, onFeedbackRestart }: Props) {
   const feedbackTypeInfo = feedbackTypes[feedbackType];
 
   return (
     <>
       <header>
+        <button
+          type="button"
+          className="absolute top-5 left-5 text-zinc-400 hover:text-zinc-100"
+          onClick={onFeedbackRestart}
+        >
+          <ArrowLeft weight="bold" className="w-4 h-4" />
+        </button>
         <span className="text-xl leading-6 flex items-center gap-2">
           <img
             src={feedbackTypeInfo.image.source}

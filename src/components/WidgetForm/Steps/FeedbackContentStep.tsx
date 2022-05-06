@@ -4,6 +4,7 @@ import { ArrowLeft } from "phosphor-react";
 import { ScreenshotButton } from "../ScreenshotButton";
 import { CloseButton } from "../../CloseButton";
 import { FeedbackKey, feedbackTypes } from "../../../data/feedbacktypes";
+import { api } from '../../../lib/api';
 
 interface Props {
   feedbackType: FeedbackKey;
@@ -22,10 +23,15 @@ export function FeedbackContentStep({
 
   function handleSubmit(ev: FormEvent<HTMLFormElement>) {
     ev.preventDefault();
-    console.log('screenshot', screenshot);
-    console.log('title', feedbackType);
-    console.log('comment', comment);
-    onFeedbackSent();
+
+    api
+      .post('feedbacks', {
+        comment,
+        type: feedbackType,
+        screenshot,
+      })
+      .then(() => onFeedbackSent())
+      .catch(error => console.error(error));
   }
 
   return (
